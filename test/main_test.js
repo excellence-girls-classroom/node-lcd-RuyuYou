@@ -3,9 +3,10 @@
  */
 describe('Unit Test' , function () {
     var inputs;
+    var allNumbers;
     beforeEach(function () {
         inputs = "910";
-        var allNumbers = require('./fixtures.js').loadAllNumbers();
+        allNumbers = require('./fixtures.js').loadAllNumbers();
     });
 
     describe('stringSplit' , function () {
@@ -19,4 +20,43 @@ describe('Unit Test' , function () {
            expect(newInputs).toEqual(expectNewInputs);
        }) ;
     });
+
+    describe('buildDisplay()' ,function () {
+        it('should print correct display',function () {
+            var inputs = [
+                '9',
+                '1',
+                '0'
+            ];
+            var lcdDisplay =require ('../main/buildDisplay.js').buildDisplay(inputs,allNumbers);
+            var expectLcdDisplay = [
+                {
+                    number:'9',
+                    lcd :[
+                        '._.',
+                        '|_|',
+                        '..|'
+                    ]
+                },
+                {
+                    number:'1',
+                    lcd :[
+                        '...',
+                        '..|',
+                        '..|'
+                    ]
+                },
+                {
+                    number:'0',
+                    lcd :[
+                        '._.',
+                        '|.|',
+                        '|_|'
+                    ]
+                }
+            ];
+            expect(lcdDisplay).toEqual (expectLcdDisplay);
+        });
+    });
+
 });
