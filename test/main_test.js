@@ -59,4 +59,53 @@ describe('Unit Test' , function () {
         });
     });
 
+    describe('buildprintDisplay()' , function () {
+       it('should print correct printDisplay' , function () {
+           var inputLCD = [
+               {
+                   number:'9',
+                   lcd :[
+                       '._.',
+                       '|_|',
+                       '..|'
+                   ]
+               },
+               {
+                   number:'1',
+                   lcd :[
+                       '...',
+                       '..|',
+                       '..|'
+                   ]
+               },
+               {
+                   number:'0',
+                   lcd :[
+                       '._.',
+                       '|.|',
+                       '|_|'
+                   ]
+               }
+           ];
+           var display = require ('../main/buildprintDisplay.js').buildprintDisplay(inputLCD);
+           var expectDisplay =
+               '...\n'+
+               '._. ... ._. \n'+
+               '|_| ..| |.| \n'+
+               '..| ..| |_| \n';
+           expect(display).toEqual (expectDisplay);
+       }) ;
+    });
+
 });
+
+
+/*describe('Integration Testing' , function () {
+    var inputs;
+    var allNumbers;
+
+    beforeEach(function () {
+        inputs = "910";
+        allNumbers = require('./fixtures.js').loadAllNumbers();
+    });
+});*/
