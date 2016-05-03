@@ -100,7 +100,7 @@ describe('Unit Test' , function () {
 });
 
 
-/*describe('Integration Testing' , function () {
+describe('Integration Testing' , function () {
     var inputs;
     var allNumbers;
 
@@ -108,4 +108,15 @@ describe('Unit Test' , function () {
         inputs = "910";
         allNumbers = require('./fixtures.js').loadAllNumbers();
     });
-});*/
+
+    it('should print correct display', function () {
+        spyOn(console, 'log');
+        require('../main/main.js').printLcdDisplay(inputs);
+        var expectDisplay =
+            '...\n'+
+            '._. ... ._. \n'+
+            '|_| ..| |.| \n'+
+            '..| ..| |_| \n';
+        expect(console.log).toHaveBeenCalledWith(expectDisplay);
+    });
+});
